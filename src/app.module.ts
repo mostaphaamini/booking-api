@@ -7,6 +7,8 @@ import entities from './typeorm';
 import { UsersModule } from './users/users.module';
 import { MembersModule } from './members/members.module';
 import { MulterModule } from '@nestjs/platform-express';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -26,7 +28,11 @@ import { MulterModule } from '@nestjs/platform-express';
     MembersModule,
     MulterModule.register({
       dest: './files',
-    })
+    }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'client'),
+      exclude: ['/api/auth*'],
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],

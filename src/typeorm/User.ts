@@ -10,13 +10,13 @@ export class User {
   //@Column({ nullable: false, length: 100, collation: 'utf8_persian_ci' })
   //fName: string;
 
-  //@Column({ nullable: false, length: 100, collation: 'utf8_persian_ci' })
+  //@Column({ nullable: false, length: 100 })
   //lName: string;
 
-  @Column({ nullable: false, length: 100, collation: 'utf8_persian_ci', unique: true })
+  @Column({ nullable: false, length: 100, unique: true })
   userName: string;
 
-  @Column({ nullable: false, length: 100, collation: 'utf8_persian_ci' })
+  @Column({ nullable: false, length: 100 })
   password: string;
 
   @Column({ default: true })
@@ -37,7 +37,7 @@ export class User {
   @OneToMany(() => Member, (agent) => agent.agent)
   agent: Member[]
 
-  //@Column({ nullable: false, length: 15, collation: 'utf8_persian_ci' })
+  //@Column({ nullable: false, length: 15 })
   //phone: string;
   //@OneToMany(type => Photo, photo => photo.user)
   //photos: Photo[];

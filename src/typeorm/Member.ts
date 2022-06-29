@@ -21,19 +21,19 @@ export class Member {
   @ManyToOne((type) => User, (user) => user.agent)
   agent: User
 
-  @Column({ nullable: true, length: 100, collation: 'utf8_persian_ci' })
+  @Column({ nullable: true, length: 100 })
   fName: string;
 
-  @Column({ nullable: true, length: 100, collation: 'utf8_persian_ci' })
+  @Column({ nullable: true, length: 100 })
   lName: string;
 
-  @Column({ nullable: true, length: 100, collation: 'utf8_persian_ci' })
+  @Column({ nullable: true, length: 100 })
   pName: string;
 
-  @Column({ nullable: true, length: 10, collation: 'utf8_persian_ci' })
+  @Column({ nullable: true, length: 10 })
   nID: string;
 
-  @Column({ nullable: true, length: 10, collation: 'utf8_persian_ci' })
+  @Column({ nullable: true, length: 10 })
   pID: string;
 
   @Column({ nullable: true, type: 'date' })
@@ -54,7 +54,7 @@ export class Member {
   @Column({ nullable: true })
   health: number;
 
-  @Column({ nullable: true, length: 512, collation: 'utf8_persian_ci' })
+  @Column({ nullable: true, length: 512 })
   healthDesc: string;
 
   @Column({ nullable: true })
@@ -87,43 +87,43 @@ export class Member {
   @Column({ nullable: true })
   pay: number;
 
-  @Column({ nullable: true, length: 100, collation: 'utf8_persian_ci' })
+  @Column({ nullable: true, length: 100 })
   exLast: string;
 
-  @Column({ nullable: true, length: 100, collation: 'utf8_persian_ci' })
+  @Column({ nullable: true, length: 100 })
   bank: string;
 
-  @Column({ nullable: true, length: 100, collation: 'utf8_persian_ci' })
+  @Column({ nullable: true, length: 100 })
   acount: string;
 
-  @Column({ nullable: true, length: 100, collation: 'utf8_persian_ci' })
+  @Column({ nullable: true, length: 100 })
   shaba: string;
 
-  @Column({ nullable: true, length: 100, collation: 'utf8_persian_ci' })
+  @Column({ nullable: true, length: 100 })
   carType: string;
 
-  @Column({ nullable: true, length: 100, collation: 'utf8_persian_ci' })
+  @Column({ nullable: true, length: 100 })
   carYear: string;
   
-  @Column({ nullable: true, length: 512, collation: 'utf8_persian_ci' })
+  @Column({ nullable: true, length: 512 })
   jobDesc: string;
 
-  @Column({ nullable: true, length: 512, collation: 'utf8_persian_ci' })
+  @Column({ nullable: true, length: 512 })
   earnDesc: string;
 
-  @Column({ nullable: true, length: 100, collation: 'utf8_persian_ci' })
+  @Column({ nullable: true, length: 100 })
   vacFileName: string;
 
-  @Column({ nullable: true, length: 100, collation: 'utf8_persian_ci' })
+  @Column({ nullable: true, length: 100 })
   solFileName: string;
 
-  @Column({ nullable: true, length: 100, collation: 'utf8_persian_ci' })
+  @Column({ nullable: true, length: 100 })
   passFileName: string;
 
-  @Column({ nullable: true, length: 512, collation: 'utf8_persian_ci' })
+  @Column({ nullable: true, length: 512 })
   adr: string;
 
-  @Column({ nullable: true, length: 15, collation: 'utf8_persian_ci' })
+  @Column({ nullable: true, length: 15 })
   postalCode: string;
 
   @Column({ nullable: false })

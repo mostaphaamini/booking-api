@@ -15,15 +15,28 @@ import { join } from 'path';
     AuthModule,
     UsersModule,
     TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: '213apr',
-      database: 'booking',
+      // type: 'postgres',
+      // host: 'localhost',
+      // port: 5432,
+      // username: 'postgres',
+      // password: '213apr',
+      // database: 'booking',
+      // entities,
+      // synchronize: true,
+      // logging: true,
+
+      type: 'postgres',
+      host: 'ec2-176-34-215-248.eu-west-1.compute.amazonaws.com',
+      port: 5432,
+      username: 'shjoloxsbmbjvg',
+      password: '010d2226401796ae837abe9bbc3d675226ebb007288fa852ae9d184cf98bf198',
+      database: 'dfl0ale0upuqrg',
       entities,
-      synchronize: true,
+      //synchronize: true,
       //logging: true,
+
+      
+
     }),
     MembersModule,
     MulterModule.register({

@@ -25,6 +25,7 @@ import { join } from 'path';
       // synchronize: true,
       // logging: true,
 
+      url: 'postgres://shjoloxsbmbjvg:010d2226401796ae837abe9bbc3d675226ebb007288fa852ae9d184cf98bf198@ec2-176-34-215-248.eu-west-1.compute.amazonaws.com:5432/dfl0ale0upuqrg',
       type: 'postgres',
       host: 'ec2-176-34-215-248.eu-west-1.compute.amazonaws.com',
       port: 5432,
@@ -32,6 +33,11 @@ import { join } from 'path';
       password: '010d2226401796ae837abe9bbc3d675226ebb007288fa852ae9d184cf98bf198',
       database: 'dfl0ale0upuqrg',
       entities,
+      synchronize: true,
+      extra: {
+        ssl: true,
+      },
+
       //synchronize: true,
       //logging: true,
 

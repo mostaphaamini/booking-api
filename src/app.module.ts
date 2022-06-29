@@ -34,10 +34,7 @@ import { join } from 'path';
       database: 'dfl0ale0upuqrg',
       entities,
       synchronize: true,
-      extra: {
-        ssl: true,
-      },
-
+      ssl: { rejectUnauthorized: false }
       //synchronize: true,
       //logging: true,
 

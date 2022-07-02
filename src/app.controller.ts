@@ -168,8 +168,9 @@ export class AppController {
     u.password = Math.floor(10000000 + Math.random() * 90000000).toString();
 
     let smsText = `کد ورود به سامانه ثبت نام سفر زیارتی کربلا ` + u.password;
+    smsText = encodeURI(smsText);
     let smsStr = `http://ecosms.ir/index2.php?goto=webservice/json&method=send&arg1=${process.env.SMSPANELUSER}&arg2=${process.env.SMSPANELPASS}&arg3=${u.userName}&arg4=${process.env.SMSPANELNUM}&arg5=${smsText}`;
-    console.log(smsStr);
+    //console.log(smsStr);
     this.httpService.get(smsStr).subscribe((res) => {
       //console.log(res);
     });

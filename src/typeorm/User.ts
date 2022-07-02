@@ -37,6 +37,9 @@ export class User {
   @OneToMany(() => Member, (agent) => agent.agent)
   agent: Member[]
 
+  @Column({ nullable: true, type: 'timestamptz' }) // Recommended
+  lastSent: Date;
+
   //@Column({ nullable: false, length: 15 })
   //phone: string;
   //@OneToMany(type => Photo, photo => photo.user)

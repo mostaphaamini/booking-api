@@ -161,12 +161,7 @@ export class AppController {
     this.userService.update(u);
   }
 
-  @Post('auth/addUser')
-  async addUser(@Request() req) {
-    let u = new User();
-    u.userName = req.body.params.username;
-    u.password = Math.floor(10000000 + Math.random() * 90000000).toString();
-
+  sendMsg(u: User){
     let smsText = `کد ورود به سامانه ثبت نام سفر زیارتی کربلا ` + u.password;
     smsText = encodeURI(smsText);
     let smsStr = `http://ecosms.ir/index2.php?goto=webservice/json&method=send&arg1=${process.env.SMSPANELUSER}&arg2=${process.env.SMSPANELPASS}&arg3=${u.userName}&arg4=${process.env.SMSPANELNUM}&arg5=${smsText}`;
@@ -174,10 +169,35 @@ export class AppController {
     this.httpService.get(smsStr, { maxContentLength: 5000 }).subscribe((res) => {
       //console.log(res);
     });
-    
+  }
 
-    const insertResult = await this.userService.Insert(u);
-    
-    return insertResult.raw.insertId;
+  dateDiffInMins(dateSent: Date){
+    let currentDate = new Date();
+    return  Math.floor(( currentDate.getTime() - dateSent.getTime() ) /(1000 * 60));
+  }
+
+  @Post('auth/addUser')
+  async addUser(@Request() req) {
+    let u = new User();
+    u.userName = req.body.params.username;
+    u.password = Math.floor(10000000 + Math.random() * 90000000).toString();
+
+    let existUser = await this.userService.findOneByUser(u.userName);
+    if(existUser){
+      let dif = this.dateDiffInMins(existUser.lastSent);
+      if(dif < 2){
+        return;
+      }
+
+      existUser.lastSent = new Date();
+      existUser.password = u.password;
+      this.userService.update(existUser);
+      this.sendMsg(u);
+      return existUser.id;
+    }else{
+      this.sendMsg(u);
+      const insertResult = await this.userService.Insert(u);
+      return insertResult.raw.insertId;
+    }
   }
 }

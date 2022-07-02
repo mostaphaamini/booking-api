@@ -55,6 +55,14 @@ export class UsersService {
     });
   }
 
+  findOneByUser( userName: string, ): Promise<User | undefined> {
+    return this.usersRepository.findOne({
+      where: {
+        userName,
+      },
+    });
+  }
+
   async remove(id: string): Promise<void> {
     await this.usersRepository.delete(id);
   }

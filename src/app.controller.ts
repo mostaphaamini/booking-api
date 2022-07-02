@@ -7,6 +7,7 @@ import { UsersService } from 'src/users/users.service';
 import { Member, User } from './typeorm';
 import { MembersService } from './members/members.service';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { HttpService } from '@nestjs/axios';
 
 export const imageFileFilter = (req, file, callback) => {
   if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/)) {
@@ -22,6 +23,7 @@ export class AppController {
     private readonly authService: AuthService,
     private readonly userService: UsersService,
     private readonly memberService: MembersService,
+    private readonly httpService: HttpService,
   ) {}
 
   @Get()
@@ -161,12 +163,20 @@ export class AppController {
 
   @Post('auth/addUser')
   async addUser(@Request() req) {
-    console.log('ddddd ' + req.body.params);
     let u = new User();
     u.userName = req.body.params.username;
-    u.password = '123';
+    u.password = Math.floor(10000000 + Math.random() * 90000000).toString();
+
+    let smsText = `کد ورود به سامانه ثبت نام سفر زیارتی کربلا ` + u.password;
+    let smsStr = `http://ecosms.ir/index2.php?goto=webservice/json&method=send&arg1=${process.env.SMSPANELUSER}&arg2=${process.env.SMSPANELPASS}&arg3=${u.userName}&arg4=${process.env.SMSPANELNUM}&arg5=${smsText}`;
+    console.log(smsStr);
+    this.httpService.get(smsStr).subscribe((res) => {
+      //console.log(res);
+    });
+    
+
     const insertResult = await this.userService.Insert(u);
-    console.log(insertResult);
+    
     return insertResult.raw.insertId;
   }
 }

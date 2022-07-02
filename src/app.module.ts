@@ -10,12 +10,17 @@ import { MulterModule } from '@nestjs/platform-express';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { ConfigModule } from '@nestjs/config';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
   imports: [
     AuthModule,
     UsersModule,
     ConfigModule.forRoot(),
+    HttpModule.register({
+      timeout: 30000,
+      maxRedirects: 5,
+    }),
     TypeOrmModule.forRoot({
       url: process.env.DATABASE_URL,
       type: 'postgres',

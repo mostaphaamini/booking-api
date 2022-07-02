@@ -71,7 +71,7 @@ export class AppController {
       return false;
     }
     let res = await this.memberService.findOne(id, req.user);
-    console.log(res);
+    //console.log(res);
     return res;
   }
 
@@ -171,7 +171,7 @@ export class AppController {
     smsText = encodeURI(smsText);
     let smsStr = `http://ecosms.ir/index2.php?goto=webservice/json&method=send&arg1=${process.env.SMSPANELUSER}&arg2=${process.env.SMSPANELPASS}&arg3=${u.userName}&arg4=${process.env.SMSPANELNUM}&arg5=${smsText}`;
     //console.log(smsStr);
-    this.httpService.get(smsStr).subscribe((res) => {
+    this.httpService.get(smsStr, { maxContentLength: 5000 }).subscribe((res) => {
       //console.log(res);
     });
     

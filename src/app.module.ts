@@ -9,37 +9,21 @@ import { MembersModule } from './members/members.module';
 import { MulterModule } from '@nestjs/platform-express';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
     AuthModule,
     UsersModule,
+    ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
-      // type: 'postgres',
-      // host: 'localhost',
-      // port: 5432,
-      // username: 'postgres',
-      // password: '213apr',
-      // database: 'booking',
-      // entities,
-      // synchronize: true,
-      // logging: true,
-
-      url: 'postgres://shjoloxsbmbjvg:010d2226401796ae837abe9bbc3d675226ebb007288fa852ae9d184cf98bf198@ec2-176-34-215-248.eu-west-1.compute.amazonaws.com:5432/dfl0ale0upuqrg',
+      url: process.env.DATABASE_URL,
       type: 'postgres',
-      host: 'ec2-176-34-215-248.eu-west-1.compute.amazonaws.com',
-      port: 5432,
-      username: 'shjoloxsbmbjvg',
-      password: '010d2226401796ae837abe9bbc3d675226ebb007288fa852ae9d184cf98bf198',
-      database: 'dfl0ale0upuqrg',
       entities,
       synchronize: true,
       ssl: { rejectUnauthorized: false }
       //synchronize: true,
       //logging: true,
-
-      
-
     }),
     MembersModule,
     MulterModule.register({

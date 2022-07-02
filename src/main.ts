@@ -6,9 +6,5 @@ async function bootstrap() {
   app.enableCors();
   app.setGlobalPrefix('api');
   await app.listen(process.env.PORT || 3000);
-  // await app.listen(process.env.PORT || 3000, function(){
-  //   console.log("Express server listening on port %d ", this.address().port);
-  // });
-  
 }
 bootstrap();

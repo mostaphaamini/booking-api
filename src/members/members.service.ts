@@ -91,7 +91,6 @@ export class MembersService {
   }
 
   findOne(mId: number, user: User): Promise<Member | undefined> {
-    console.log('iddddddddddddddddddd ' + mId);
     if(user.isAdmin || user.isSuperAdmin){
       return this.membersRepository.findOneBy({ id: mId });
     }else if(user.isAgent ){

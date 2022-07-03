@@ -26,8 +26,7 @@ import { HttpModule } from '@nestjs/axios';
       type: 'postgres',
       entities,
       synchronize: true,
-      ssl: { rejectUnauthorized: false }
-      //synchronize: true,
+      ssl: { rejectUnauthorized: false },
       //logging: true,
     }),
     MembersModule,

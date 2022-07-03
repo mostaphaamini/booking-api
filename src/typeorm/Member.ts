@@ -90,6 +90,15 @@ export class Member {
   @Column({ nullable: true, length: 100 })
   exLast: string;
 
+  @Column({ nullable: true })
+  experienced40: number;
+
+  @Column({ nullable: true })
+  ex40Num: number;
+
+  @Column({ nullable: true, length: 100 })
+  ex40Last: string;
+
   @Column({ nullable: true, length: 100 })
   bank: string;
 
@@ -120,6 +129,12 @@ export class Member {
   @Column({ nullable: true, length: 100 })
   passFileName: string;
 
+  @Column({ nullable: true, length: 100 })
+  phone: string;
+
+  @Column({ nullable: true, length: 100 })
+  relMobile: string;
+
   @Column({ nullable: true, length: 512 })
   adr: string;
 
@@ -129,8 +144,23 @@ export class Member {
   @Column({ nullable: false })
   hasPass: boolean = false;
 
-  @Column({ nullable: false })
-  married: boolean = false;
+  @Column({ nullable: true })
+  otherTravel: boolean = false;
+
+  @Column({ nullable: true })
+  married: number;
+
+  @Column({ nullable: true })
+  kids: number;
+
+  @Column({ nullable: true })
+  solType: number;
+
+  @Column({ nullable: true })
+  house: number;
+
+  @Column({ nullable: true })
+  locType: number;
 
   @Column({ nullable: false })
   agentConfirm: boolean = false;

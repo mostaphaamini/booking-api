@@ -181,6 +181,7 @@ export class AppController {
     let u = new User();
     u.userName = req.body.params.username;
     u.password = Math.floor(10000000 + Math.random() * 90000000).toString();
+    u.lastSent = new Date();
 
     let existUser = await this.userService.findOneByUser(u.userName);
     if(existUser){

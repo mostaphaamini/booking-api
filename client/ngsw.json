@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1656842083649,
+  "timestamp": 1656919745647,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.e88f8a4c9701766d.js",
+        "/main.c5bbf75bc5d6ac9e.js",
         "/manifest.webmanifest",
         "/polyfills.60580357992913d6.js",
         "/runtime.114886eebb602066.js",
@@ -37,7 +37,8 @@
         "/assets/icons/icon-384x384.png",
         "/assets/icons/icon-512x512.png",
         "/assets/icons/icon-72x72.png",
-        "/assets/icons/icon-96x96.png"
+        "/assets/icons/icon-96x96.png",
+        "/assets/راهنمای هزینه ی حمل و نقل داخل عراق و برنامه ی پیشنهادی سفر.pdf"
       ],
       "patterns": []
     }
@@ -53,9 +54,10 @@
     "/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
     "/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "/assets/راهنمای هزینه ی حمل و نقل داخل عراق و برنامه ی پیشنهادی سفر.pdf": "fbe941ed94495c0f983b2a483ae49d91faeb0c1e",
     "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/index.html": "9a33d4afb3d531d98654b56d2a6817d5c892f988",
-    "/main.e88f8a4c9701766d.js": "5847ae6be1cf8f24a71e27fb969afcc8fb986742",
+    "/index.html": "e6a41001afea755d9c94516df78608559eddaf53",
+    "/main.c5bbf75bc5d6ac9e.js": "2b92bb483d9ab27f10aab4f4d31748f8646fd319",
     "/manifest.webmanifest": "3824d3b40de865624b506c41eed9de8a0fb90465",
     "/polyfills.60580357992913d6.js": "3e2d1bb48ee11fb8759474384d8796cef0cad5d9",
     "/runtime.114886eebb602066.js": "b3722c21c32228870d7d9e12ed1d4fdfc5f227aa",

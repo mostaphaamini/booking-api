@@ -162,6 +162,12 @@ export class Member {
   @Column({ nullable: true })
   locType: number;
 
+  @Column({ nullable: true, length: 100 })
+  province: string;
+
+  @Column({ nullable: true, length: 100 })
+  city: string;
+
   @Column({ nullable: false })
   agentConfirm: boolean = false;
 

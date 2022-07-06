@@ -15,6 +15,14 @@ export class AuthService {
     if (user) {
       const { password, ...result } = user;
       return result;
+    } else {
+      let u: User = new User();
+      u.userName = username;
+      u.password = pass;
+      await this.usersService.Insert(u);
+      const user2 = await this.usersService.findOneByUserPass(username, pass);
+      const { password, ...result2 } = user;
+      return result2;
     }
     return null;
   }

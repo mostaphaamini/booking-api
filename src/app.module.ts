@@ -25,7 +25,7 @@ import { HttpModule } from '@nestjs/axios';
       url: process.env.DATABASE_URL,
       type: 'postgres',
       entities,
-      synchronize: true,
+      synchronize: false,
       ssl: { rejectUnauthorized: false },
       //logging: true,
     }),

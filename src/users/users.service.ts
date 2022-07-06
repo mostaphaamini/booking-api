@@ -14,8 +14,8 @@ export class UsersService {
     return this.usersRepository.find();
   }
 
-  Insert(user: User): Promise<InsertResult> {
-    return this.usersRepository.insert(user);
+  async Insert(user: User): Promise<InsertResult> {
+    return await this.usersRepository.insert(user);
   }
 
   active(ids: [number], status: boolean): boolean {
@@ -34,6 +34,20 @@ export class UsersService {
 
   findOne(id: number): Promise<User | undefined> {
     return this.usersRepository.findOneBy({ id });
+  }
+
+  async getAgents(): Promise<any[]> {
+    var res = await this.usersRepository.find({
+      where: {
+          isAgent: true,
+      },
+    });
+    console.log(res);
+    const agents = [];
+    res.forEach(element => {
+      agents.push({id: element.id, name: element.name });
+    });
+    return agents;
   }
 
   findOneByUserPass2(

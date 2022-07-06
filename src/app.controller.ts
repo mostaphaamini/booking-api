@@ -34,6 +34,7 @@ export class AppController {
   @UseGuards(LocalAuthGuard)
   @Post('auth/login')
   async login(@Request() req) {
+    
     return this.authService.login(req.user);
   }
 
@@ -125,7 +126,8 @@ export class AppController {
   @UseGuards(JwtAuthGuard)
   @Get('auth/getAgents')
   async getAgents() {
-    return this.memberService.getAgents();
+    //return this.memberService.getAgents();
+    return this.userService.getAgents();
   }
 
 
@@ -176,29 +178,29 @@ export class AppController {
     return  Math.floor(( currentDate.getTime() - dateSent.getTime() ) /(1000 * 60));
   }
 
-  @Post('auth/addUser')
-  async addUser(@Request() req) {
-    let u = new User();
-    u.userName = req.body.params.username;
-    u.password = Math.floor(10000000 + Math.random() * 90000000).toString();
-    u.lastSent = new Date();
+  // @Post('auth/addUser')
+  // async addUser(@Request() req) {
+  //   let u = new User();
+  //   u.userName = req.body.params.username;
+  //   u.password = Math.floor(10000000 + Math.random() * 90000000).toString();
+  //   u.lastSent = new Date();
 
-    let existUser = await this.userService.findOneByUser(u.userName);
-    if(existUser){
-      let dif = this.dateDiffInMins(existUser.lastSent);
-      if(dif < 2){
-        return;
-      }
+  //   let existUser = await this.userService.findOneByUser(u.userName);
+  //   if(existUser){
+  //     let dif = this.dateDiffInMins(existUser.lastSent);
+  //     if(dif < 2){
+  //       return;
+  //     }
 
-      existUser.lastSent = new Date();
-      existUser.password = u.password;
-      this.userService.update(existUser);
-      this.sendMsg(u);
-      return existUser.id;
-    }else{
-      this.sendMsg(u);
-      const insertResult = await this.userService.Insert(u);
-      return insertResult.raw.insertId;
-    }
-  }
+  //     existUser.lastSent = new Date();
+  //     existUser.password = u.password;
+  //     this.userService.update(existUser);
+  //     this.sendMsg(u);
+  //     return existUser.id;
+  //   }else{
+  //     this.sendMsg(u);
+  //     const insertResult = await this.userService.Insert(u);
+  //     return insertResult.raw.insertId;
+  //   }
+  // }
 }

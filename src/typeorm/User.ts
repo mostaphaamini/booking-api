@@ -40,6 +40,13 @@ export class User {
   @Column({ nullable: true, type: 'timestamptz' }) // Recommended
   lastSent: Date;
 
+  @Column({ nullable: true })
+  name: string;
+
+  @Column({ nullable: true, default: 0 })
+  agentLimit: number;
+
+
   //@Column({ nullable: false, length: 15 })
   //phone: string;
   //@OneToMany(type => Photo, photo => photo.user)

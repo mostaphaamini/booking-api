@@ -8,6 +8,8 @@ export class MembersService {
   constructor(
     @InjectRepository(Member)
     private membersRepository: Repository<Member>,
+    @InjectRepository(User)
+    private usersRepository: Repository<User>,
   ) {}
 
   findAll(user: User): Promise<Member[]> {
@@ -50,6 +52,20 @@ export class MembersService {
     ids.forEach(async (value: number, index: number) => {
       let m = await this.findOne(value, user);
       if(m){
+
+        if(status){
+          let cnt = await this.membersRepository.count({
+            where: {
+              agent: m.agent , agentConfirm: true
+            },
+          })
+
+          let agent = await this.usersRepository.findOneBy({id: m.agent.id});
+          if(agent.agentLimit <= cnt){
+            return false;
+          }
+        }
+
         m.agentConfirm = status;
         await this.membersRepository.save(m);
       }

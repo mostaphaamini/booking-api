@@ -42,7 +42,6 @@ export class UsersService {
           isAgent: true,
       },
     });
-    console.log(res);
     const agents = [];
     res.forEach(element => {
       agents.push({id: element.id, name: element.name });

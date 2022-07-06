@@ -80,6 +80,7 @@ export class AppController {
   @Post('auth/saveMember')
   saveMember(@Request() req) {
     const { agentConfirm, adminConfirm, superAdminConfirm, ...result } = req.body.params;
+    result.userId = req.user.id;
     return this.memberService.update(result);
   }
 

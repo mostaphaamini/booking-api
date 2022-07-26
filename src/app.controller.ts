@@ -60,8 +60,17 @@ export class AppController {
 
   @UseGuards(JwtAuthGuard)
   @Post('auth/getMembers')
-  getMembers(@Request() req) {
-    return this.memberService.findAll(req.user);
+  async getMembers(@Request() req) {
+    var ms  = await this.memberService.findAll(req.user);
+    const res = [];
+    ms.forEach(element => {
+      if(element.agent != null){
+        element.agent.password = '';
+        element.agent.userName = '';
+      }
+      res.push(element);
+    });
+    return res;
   }
 
   @UseGuards(JwtAuthGuard)
@@ -78,9 +87,10 @@ export class AppController {
 
   @UseGuards(JwtAuthGuard)
   @Post('auth/saveMember')
-  saveMember(@Request() req) {
+  async saveMember(@Request() req) {
     const { agentConfirm, adminConfirm, superAdminConfirm, ...result } = req.body.params;
     result.userId = req.user.id;
+    result.agent = await this.userService.findOne(result.agentId);
     return this.memberService.update(result);
   }
 
@@ -121,7 +131,7 @@ export class AppController {
     m.user = req.user;
     m.relation = 1;
     const insertResult = await this.memberService.Insert(m);
-    return insertResult.raw.insertId;
+    return insertResult.raw[0];
   }
 
   @UseGuards(JwtAuthGuard)

@@ -12,13 +12,13 @@ export class Member {
   @Column()
   userId: number
 
-  @ManyToOne((type) => User, (user) => user.members)
+  @ManyToOne((type) => User, (user) => user.members, {eager: true} )
   user: User
 
   @Column({nullable: true})
   agentId: number
 
-  @ManyToOne((type) => User, (user) => user.agent)
+  @ManyToOne((type) => User, (user) => user.agent, {eager: true})
   agent: User
 
   @Column({ nullable: true, length: 100 })
@@ -141,7 +141,7 @@ export class Member {
   @Column({ nullable: true, length: 15 })
   postalCode: string;
 
-  @Column({ nullable: false })
+  @Column({ nullable: true })
   hasPass: boolean = false;
 
   @Column({ nullable: true })
@@ -168,13 +168,14 @@ export class Member {
   @Column({ nullable: true, length: 100 })
   city: string;
 
-  @Column({ nullable: false })
+  @Column({ nullable: true })
   agentConfirm: boolean = false;
 
-  @Column({ nullable: false })
+  @Column({ nullable: true })
   adminConfirm: boolean = false;
 
-  @Column({ nullable: false })
+  @Column({ nullable: true })
   superAdminConfirm: boolean = false;
+  element: { id: number; isActive: boolean; isAgent: boolean; isAdmin: boolean; isSuperAdmin: boolean; members: Member[]; agent: Member[]; lastSent: Date; name: string; agentLimit: number; };
 
 }

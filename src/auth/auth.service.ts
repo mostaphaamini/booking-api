@@ -21,7 +21,7 @@ export class AuthService {
       u.password = pass;
       await this.usersService.Insert(u);
       const user2 = await this.usersService.findOneByUserPass(username, pass);
-      const { password, ...result2 } = user;
+      const { password, ...result2 } = user2;
       return result2;
     }
     return null;

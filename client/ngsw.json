@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1657121548136,
+  "timestamp": 1658733810930,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.e604fd3d71f0c2fe.js",
+        "/main.5932c848e6efb930.js",
         "/manifest.webmanifest",
         "/polyfills.60580357992913d6.js",
         "/runtime.114886eebb602066.js",
@@ -56,8 +56,8 @@
     "/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "/assets/راهنمای هزینه ی حمل و نقل داخل عراق و برنامه ی پیشنهادی سفر.pdf": "fbe941ed94495c0f983b2a483ae49d91faeb0c1e",
     "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/index.html": "2f69de46ca4f96480ce141b416c68a669797d601",
-    "/main.e604fd3d71f0c2fe.js": "6363de4dd31d510b885a3b14ed124db5de809c66",
+    "/index.html": "9d65492861c217df9f8d37e61b111b50b2c99199",
+    "/main.5932c848e6efb930.js": "a5e79c625043fe4858e607ee97c9b37f73cca6f0",
     "/manifest.webmanifest": "3824d3b40de865624b506c41eed9de8a0fb90465",
     "/polyfills.60580357992913d6.js": "3e2d1bb48ee11fb8759474384d8796cef0cad5d9",
     "/runtime.114886eebb602066.js": "b3722c21c32228870d7d9e12ed1d4fdfc5f227aa",

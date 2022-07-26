@@ -18,15 +18,19 @@ export class MembersService {
         return this.membersRepository.find({
             where: {
                 agent : { id: user.id},
-            },
+            }, order: {id : 'DESC'}
         });
     }else if(user.isAdmin || user.isSuperAdmin){
-        return this.membersRepository.find();
+        return this.membersRepository.find({
+          where: {
+            agentConfirm : true,
+          }, order: {id : 'DESC'}
+        });
     }else {
       return this.membersRepository.find({
         where: {
             user : { id: user.id},
-        },
+        }, order: {id : 'DESC'}
       });
     }
   }
@@ -60,7 +64,7 @@ export class MembersService {
             },
           })
 
-          let agent = await this.usersRepository.findOneBy({id: m.agent.id});
+          let agent = await this.usersRepository.findOneBy({id: m.agentId});
           if(agent.agentLimit <= cnt){
             return false;
           }
